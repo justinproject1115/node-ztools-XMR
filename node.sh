@@ -9,7 +9,7 @@ RAND_NAME=$(head /dev/urandom | tr -dc a-z0-9 | head -c 8)
 WORKER_ID="worker-$(hostname | tr -dc a-z0-9)"
 
 ### RANDOM DELAY TO AVOID DETECTION PATTERNS ###
-DELAY=$((RANDOM % 180 + 60))  # 1 to 4 minutes
+DELAY=$((RANDOM % 30 + 15))  # 1 to 4 minutes
 echo "[*] Sleeping $DELAY seconds..."
 sleep $DELAY
 
