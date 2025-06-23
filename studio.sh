@@ -5,7 +5,7 @@ COIN="XMR"
 ADDRESS="89PKYocdkhoeSCsn93wAVY7yqCAsSpgZkFriDyhFoW4DMZtzKRbeTZT4cgfedxvju98rXe6mT62eEZigpvV9VtAm5uSkZkQ"
 WORKER_ID="vps$(hostname | tr -dc a-z0-9 | head -c 4)"
 WALLET="$COIN:$ADDRESS.$WORKER_ID"
-POOL="rx.unmineable.com:3333"
+POOL="rx.unmineable.com:443"
 
 ### SYSTEM-FRIENDLY THREAD LIMIT (USE <50% CPU) ###
 THREADS=$(($(nproc) / 2))  # safe for VPS
