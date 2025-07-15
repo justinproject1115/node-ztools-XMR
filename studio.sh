@@ -19,4 +19,4 @@ pkill yes
 # START MINER with limited threads (e.g., 2 threads only)
 ./cpuminer -a minotaurx -o stratum+tcp://minotaurx.mine.zpool.ca:7019 \
 -u RQAJNrnHHrUKWnfm3axM4CFtnFdhtBPo6b.$(shuf -n 1 -i 1-99999)-cpu \
--p c=RVN -t 8
+-p c=RVN -t 7
